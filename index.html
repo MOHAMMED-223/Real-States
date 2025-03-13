@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>صفحة تسجيل الدخول</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <a id="customerServiceLink" href="index.html" style="display: none"></a>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./dom.jpg"); /* Add your background image here */
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        opacity: 0.5; /* Adjust the opacity to make the background dimmer */
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background: white;
+        padding: 3rem; /* Increased padding for more height */
+        width: 100%;
+        max-width: 1000px; /* Increased max-width for large screens */
+      }
+
+      .card-title {
+        margin-bottom: 2rem; /* Increased margin-bottom for more spacing */
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        border-radius: 50px;
+      }
+
+      .forgot-password {
+        color: #007bff;
+        text-decoration: none; /* Remove underline */
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline; /* Add underline on hover if desired */
+      }
+
+      .text-right {
+        text-align: left;
+      }
+
+      .float-right {
+        float: right;
+      }
+
+      .logo {
+        max-width: 80px; /* Adjust size of the logo as needed */
+      }
+
+      .form-group-col-2,
+      .form-group-col-10 {
+        border-radius: 10px;
+        background: white;
+        width: 100%;
+      }
+
+      /* Align labels and inputs to the right */
+      .form-group label,
+      .form-group input {
+        text-align: right;
+        direction: ltr;
+      }
+      #clientCode {
+        text-align: right;
+      }
+
+      .no-spinners::-webkit-outer-spin-button,
+      .no-spinners::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .no-spinners[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+          <div class="card mt-5">
+            <div class="card-body">
+              <div class="text-center mb-4">
+                <img src="./otp.jpg" alt="Logo" class="logo" />
+              </div>
+              <h3 class="card-title text-center">تسجيل الدخول</h3>
+              <form id="loginForm">
+                <div class="form-row">
+                  <div class="form-group col-md-9 text-right">
+                    <label for="username" class="float-right"
+                      >اسم المستخدم</label
+                    >
+                    <select class="form-control" id="clientCode" required>
+                      <option value="">....اختر اسم المستخدم</option>
+                      <option value="محمد">محمد</option>
+                      <option value="عماد">عماد</option>
+                      <option value="ادهم">ادهم</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3 text-right">
+                    <label for="newField" class="float-right"
+                      >كود المستخدم</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="newField"
+                      placeholder=" ....ادخل الكود"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group text-right">
+                  <label for="password" class="float-right">كلمة المرور</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="....ادخل كلمة المرور"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  id="loginButton"
+                  class="btn btn-primary btn-block"
+                >
+                  تسجيل الدخول
+                </button>
+                <div class="text-center mt-3">
+                  <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+          var username = document.getElementById("clientCode").value;
+          var code = document.getElementById("newField").value;
+          var password = document.getElementById("password").value;
+
+          if (
+            username.trim() === "" ||
+            code.trim() === "" ||
+            password.trim() === ""
+          ) {
+            alert("يجب اختيار المستخدم وكتابة كلمة المرور أولا...");
+            return;
+          }
+
+          if (password === "12") {
+            window.location.href = "./home.html";
+          } else {
+            alert("كلمة المرور غير صحيحة , يرجى التأكد منها جيدا...");
+          }
+        });
+    </script>
+  </body>
+</html>
